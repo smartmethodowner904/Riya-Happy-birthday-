@@ -1,1 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    background:black;
+}
+
+/* First Page */
+
+.page1{
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#ff4da6,#ff6b81,#ff9f43);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Floating Hearts */
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:25px;
+    animation:float 6s linear infinite;
+    opacity:.7;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(.5);
+    }
+    100%{
+        transform:translateY(-120px) scale(1.4);
+    }
+}
+
+/* Love Card */
+
+.card{
+    width:90%;
+    max-width:360px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
+    border-radius:30px;
+    padding:35px 20px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
+    animation:popup 1s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.6);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.emoji{
+    font-size:90px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.card h1{
+    color:white;
+    font-size:34px;
+    margin-top:20px;
+    line-height:1.4;
+    text-shadow:0 0 15px rgba(255,255,255,.5);
+}
+
+.card p{
+    color:white;
+    margin-top:15px;
+    font-size:18px;
+}
+
+/* Buttons */
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+button{
+    border:none;
+    padding:14px 26px;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.yes{
+    background:white;
+    color:#ff4da6;
+}
+
+.yes:hover{
+    transform:scale(1.1);
+}
+
+.no{
+    background:#fff3;
+    color:white;
+}
+
+/* Second Page */
+
+.page2{
+    width:100%;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+
+    background:linear-gradient(
+        -45deg,
+        #ff0080,
+        #7928ff,
+        #00c3ff,
+        #00ff95
+    );
+
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* Stars */
+
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:blink 2s infinite;
+}
+
+@keyframes blink{
+
+    0%,100%{
+        opacity:.2;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}
+
+/* Text */
+
+.love-text{
+    position:absolute;
+    top:20px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    z-index:10;
+    padding:0 15px;
+}
+
+.text-box{
+    width:100%;
+    max-width:360px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter:blur(8px);
+    border-radius:25px;
+    padding:20px;
+    text-align:center;
+    color:white;
+    box-shadow:0 0 25px rgba(255,255,255,.08);
+    animation:fadeDown 1.5s ease;
+}
+
+.text-box h1{
+    font-size:24px;
+    margin-bottom:15px;
+    line-height:1.4;
+    animation:rgbText 4s linear infinite;
+}
+
+.text-box h2{
+    margin-top:12px;
+    font-size:17px;
+    animation:rgbText 5s linear infinite;
+}
+
+.text-box p{
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:10px;
+    color:#f1f1f1;
+    animation:fadeGlow 3s infinite alternate;
+}
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes rgbText{
+
+    0%{
+        color:#ff0080;
+        text-shadow:0 0 15px #ff0080;
+    }
+
+    25%{
+        color:#00c3ff;
+        text-shadow:0 0 15px #00c3ff;
+    }
+
+    50%{
+        color:#00ff95;
+        text-shadow:0 0 15px #00ff95;
+    }
+
+    75%{
+        color:#ffd500;
+        text-shadow:0 0 15px #ffd500;
+    }
+
+    100%{
+        color:#ff0080;
+        text-shadow:0 0 15px #ff0080;
+    }
+
+}
+
+@keyframes fadeGlow{
+
+    from{
+        opacity:.7;
+        transform:translateY(0);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(-2px);
+        text-shadow:0 0 10px white;
+    }
+
+}
+
+/* Love Flower Tree */
+
+.love-tree{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:220px;
+    height:320px;
+    z-index:2;
+}
+
+.tree-stem{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:24px;
+    height:170px;
+    background:linear-gradient(to top,#4e2a12,#7a4b25);
+    border-radius:20px;
+}
+
+.tree-top{
+    position:absolute;
+    bottom:120px;
+    left:50%;
+    transform:translateX(-50%);
+    width:190px;
+    height:190px;
+    background:radial-gradient(circle,#ff5ca8,#ff2f7b);
+    border-radius:50%;
+    box-shadow:0 0 40px #ff5ca8;
+}
+
+.tree-flower{
+    position:absolute;
+    font-size:22px;
+    animation:treeGlow 2s infinite alternate;
+}
+
+@keyframes treeGlow{
+
+    from{
+        transform:scale(.9);
+        opacity:.7;
+    }
+
+    to{
+        transform:scale(1.2);
+        opacity:1;
+        filter:drop-shadow(0 0 10px white);
+    }
+
+}
+
+/* Falling Flowers */
+
+.falling-flower{
+    position:absolute;
+    top:-20px;
+    font-size:22px;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:translateY(-20px) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+/* Flowers */
+
+.flowers{
+    position:absolute;
+    bottom:60px;
+    display:flex;
+    gap:30px;
+}
+
+.flower{
+    position:relative;
+    width:80px;
+    height:200px;
+    animation:up 2s ease forwards;
+}
+
+@keyframes up{
+
+    from{
+        transform:translateY(250px);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+}
+
+.stem{
+    position:absolute;
+    width:6px;
+    height:120px;
+    background:#2ecc71;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:0;
+    border-radius:20px;
+}
+
+.petal{
+    width:35px;
+    height:35px;
+    background:white;
+    border-radius:50%;
+    position:absolute;
+}
+
+.center{
+    width:20px;
+    height:20px;
+    background:yellow;
+    border-radius:50%;
+    position:absolute;
+    top:28px;
+    left:30px;
+    z-index:2;
+}
+
+.p1{
+    top:10px;
+    left:22px;
+}
+
+.p2{
+    top:28px;
+    left:5px;
+}
+
+.p3{
+    top:28px;
+    left:40px;
+}
+
+.p4{
+    top:50px;
+    left:22px;
+}
+
+/* Spark */
+
+.spark{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#fff;
+    border-radius:50%;
+    animation:spark 3s linear infinite;
+}
+
+@keyframes spark{
+
+    0%{
+        transform:translateY(0) scale(.5);
+        opacity:0;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-150px) scale(1.4);
+        opacity:0;
+    }
+
+}
+
+/* Wedding Lights */
+
+.light{
+    position:absolute;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    animation:blinkLight 1s infinite alternate;
+    box-shadow:0 0 20px currentColor;
+}
+
+@keyframes blinkLight{
+
+    from{
+        opacity:.3;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.4);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- First Page -->
+
+<div class="page1" id="page1">
+
+    <div class="heart" style="left:10%; animation-delay:0s;">💖</div>
+    <div class="heart" style="left:30%; animation-delay:1s;">💕</div>
+    <div class="heart" style="left:50%; animation-delay:2s;">💗</div>
+    <div class="heart" style="left:70%; animation-delay:3s;">💞</div>
+    <div class="heart" style="left:85%; animation-delay:4s;">💓</div>
+
+    <div class="card">
+
+        <div class="emoji">🎂💖</div>
+
+        <h1>
+            তোমার জন্য একটি বিশেষ Birthday Surprise ✨
+        </h1>
+
+        <p>
+            নিচের বাটনে ক্লিক করো 💕
+        </p>
+
+        <div class="buttons">
+
+            <button class="yes" onclick="openLove()">
+                Yes 💖
+            </button>
+
+            <button class="no">
+                Of Course 😍
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Second Page -->
+
+<div class="page2" id="page2">
+
+    <div class="stars" id="stars"></div>
+
+    <div class="love-text">
+
+        <div class="text-box">
+
+            <h1>🎂 Happy Birthday Marjia 💖✨</h1>
+
+            <p>
+                তোমার জীবনের প্রতিটি মুহূর্ত হোক সুখ, হাসি আর ভালোবাসায় ভরা 🌸
+            </p>
+
+            <p>
+                তোমার সব স্বপ্ন পূরণ হোক এবং সবসময় এভাবেই হাসিখুশি থাকো 😊💕
+            </p>
+
+            <p>
+                আজকের দিনটা শুধু তোমার জন্যই স্পেশাল 🎉
+            </p>
+
+            <p>
+                Enjoy your beautiful day princess 👑💫
+            </p>
+
+            <h2>— Best Wishes For You 💝</h2>
+
+        </div>
+
+    </div>
+
+    <!-- Love Tree -->
+
+    <div class="love-tree">
+
+        <div class="tree-top">
+
+            <div class="tree-flower" style="top:20px; left:40px;">💖</div>
+            <div class="tree-flower" style="top:50px; left:120px;">🌸</div>
+            <div class="tree-flower" style="top:90px; left:70px;">💕</div>
+            <div class="tree-flower" style="top:40px; left:80px;">💗</div>
+            <div class="tree-flower" style="top:110px; left:120px;">🌺</div>
+            <div class="tree-flower" style="top:130px; left:45px;">💞</div>
+
+        </div>
+
+        <div class="tree-stem"></div>
+
+    </div>
+
+    <!-- Flowers -->
+
+    <div class="flowers">
+
+        <div class="flower">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+
+            <div class="center"></div>
+
+            <div class="stem"></div>
+
+        </div>
+
+        <div class="flower" style="animation-delay:.5s;">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+
+            <div class="center"></div>
+
+            <div class="stem"></div>
+
+        </div>
+
+        <div class="flower" style="animation-delay:1s;">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+
+            <div class="center"></div>
+
+            <div class="stem"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Music -->
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* Open Second Page */
+
+function openLove(){
+
+    document.getElementById("page1").style.display="none";
+
+    document.getElementById("page2").style.display="flex";
+
+    document.getElementById("music").play();
+
+}
+
+/* Stars */
+
+const stars = document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+    let star=document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left=Math.random()*100+"%";
+
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDelay=Math.random()*3+"s";
+
+    stars.appendChild(star);
+
+}
+
+/* Spark Effects */
+
+for(let i=0;i<40;i++){
+
+    let spark=document.createElement("div");
+
+    spark.classList.add("spark");
+
+    spark.style.left=Math.random()*100+"%";
+
+    spark.style.bottom=Math.random()*200+"px";
+
+    spark.style.animationDelay=Math.random()*3+"s";
+
+    document.getElementById("page2").appendChild(spark);
+
+}
+
+/* Wedding Lights */
+
+for(let i=0;i<80;i++){
+
+    let light=document.createElement("div");
+
+    light.classList.add("light");
+
+    light.style.left=Math.random()*100+"%";
+
+    light.style.top=Math.random()*100+"%";
+
+    light.style.color=`hsl(${Math.random()*360},100%,60%)`;
+
+    light.style.animationDelay=Math.random()*2+"s";
+
+    document.getElementById("page2").appendChild(light);
+
+}
+
+/* Falling Love Flowers */
+
+setInterval(()=>{
+
+    let flower=document.createElement("div");
+
+    flower.classList.add("falling-flower");
+
+    flower.innerHTML=["💖","🌸","💕","🌺","💗"][Math.floor(Math.random()*5)];
+
+    flower.style.left=Math.random()*100+"%";
+
+    flower.style.animationDuration=
+    (Math.random()*3+4)+"s";
+
+    document.getElementById("page2").appendChild(flower);
+
+    setTimeout(()=>{
+        flower.remove();
+    },7000);
+
+},400);
+
+</script>
+
+</body>
+  </html>
